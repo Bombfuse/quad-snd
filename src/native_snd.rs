@@ -125,7 +125,7 @@ impl<T: Send + 'static, J: Send + 'static> SoundDriver<T, J> {
         }
     }
 
-    fn get_sample_rate(&self) -> f32 {
+    pub fn get_sample_rate(&self) -> f32 {
         if let Some(ref fmt) = self.format {
             fmt.sample_rate.0 as f32
         } else {

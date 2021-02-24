@@ -138,6 +138,12 @@ impl SoundMixer {
 
     pub fn get_progress(&self, sound_id: SoundId) -> f32 { self.driver.get_sound_progress(sound_id) }
 
+    /// Get the sample rate of the output device this mixer sends sounds to.
+    /// Useful for knowing when to resample sounds before playing them.
+    pub fn get_sample_rate(&self) -> f32 {
+        self.driver.get_sample_rate()
+    }
+
     pub fn set_volume(&mut self, sound_id: SoundId, volume: Volume) {
         self.driver
             .send_event(MixerMessage::SetVolume(sound_id, volume));
